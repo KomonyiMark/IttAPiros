@@ -5,17 +5,27 @@
  */
 package ittapiros;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Win10
  */
 public class Ablak extends javax.swing.JFrame {
 
+    private int golyo;
+    private boolean jo;
+
     /**
      * Creates new form Ablak
      */
     public Ablak() {
-        initComponents();
+        // initComponents();
+        haromPohar();
+        // negyPohar();
+        setLocationRelativeTo(this);
+        setTitle("Itt a piros, hol a piros");
     }
 
     /**
@@ -28,34 +38,47 @@ public class Ablak extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        Mentés = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        elsoPohar = new javax.swing.JButton();
+        masodikPohar = new javax.swing.JButton();
+        harmadikPohar = new javax.swing.JButton();
+        visszajelzesCim = new javax.swing.JLabel();
+        visszajelzes = new javax.swing.JLabel();
+        ujHely = new javax.swing.JCheckBox();
+        menuBar = new javax.swing.JMenuBar();
+        jatekFile = new javax.swing.JMenu();
+        ujJatek = new javax.swing.JMenuItem();
+        mentes = new javax.swing.JMenuItem();
+        betoltes = new javax.swing.JMenuItem();
+        jatekMenu = new javax.swing.JMenu();
+        hPohar = new javax.swing.JMenuItem();
+        nPohar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Pohár");
+        elsoPohar.setText("1");
+        elsoPohar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elsoPoharActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Pohár");
+        masodikPohar.setText("2");
+        masodikPohar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                masodikPoharActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Pohár");
+        harmadikPohar.setText("3");
+        harmadikPohar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                harmadikPoharActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("Visszajelzés:");
+        visszajelzesCim.setText("Visszajelzés:");
 
-        jLabel2.setText("Igen");
-
-        jCheckBox1.setText("Új hely");
+        ujHely.setText("Új hely");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -64,75 +87,80 @@ public class Ablak extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1)
+                    .addComponent(ujHely)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(elsoPohar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(masodikPohar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3))
+                        .addComponent(harmadikPohar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(visszajelzesCim)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2)))
-                .addContainerGap(379, Short.MAX_VALUE))
+                        .addComponent(visszajelzes)))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(elsoPohar)
+                    .addComponent(masodikPohar)
+                    .addComponent(harmadikPohar))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(visszajelzesCim)
+                    .addComponent(visszajelzes))
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox1)
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addComponent(ujHely)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("File");
+        jatekFile.setText("File");
 
-        jMenuItem3.setText("Új játék");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        ujJatek.setText("Új játék");
+        ujJatek.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                ujJatekActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jatekFile.add(ujJatek);
 
-        Mentés.setText("Mentés");
-        Mentés.addActionListener(new java.awt.event.ActionListener() {
+        mentes.setText("Mentés");
+        mentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MentésActionPerformed(evt);
+                mentesActionPerformed(evt);
             }
         });
-        jMenu1.add(Mentés);
+        jatekFile.add(mentes);
 
-        jMenuItem5.setText("Betöltés");
-        jMenu1.add(jMenuItem5);
+        betoltes.setText("Betöltés");
+        jatekFile.add(betoltes);
 
-        jMenuBar1.add(jMenu1);
+        menuBar.add(jatekFile);
 
-        jMenu2.setText("Játék");
+        jatekMenu.setText("Játék");
 
-        jMenuItem1.setText("3 pohár");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        hPohar.setText("3 pohár");
+        hPohar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                hPoharActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jatekMenu.add(hPohar);
 
-        jMenuItem2.setText("4 pohár");
-        jMenu2.add(jMenuItem2);
+        nPohar.setText("4 pohár");
+        nPohar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nPoharActionPerformed(evt);
+            }
+        });
+        jatekMenu.add(nPohar);
 
-        jMenuBar1.add(jMenu2);
+        menuBar.add(jatekMenu);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,17 +182,37 @@ public class Ablak extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void hPoharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hPoharActionPerformed
+        haromPohar();
+        JOptionPane.showMessageDialog(this, "Három poháros mód");
+    }//GEN-LAST:event_hPoharActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void ujJatekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ujJatekActionPerformed
+        visszajelzes.setText("");
+        elhelyez();
+        jo = false;
+        haromPohar();
+    }//GEN-LAST:event_ujJatekActionPerformed
 
-    private void MentésActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MentésActionPerformed
+    private void mentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MentésActionPerformed
+    }//GEN-LAST:event_mentesActionPerformed
+
+    private void nPoharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nPoharActionPerformed
+        JOptionPane.showMessageDialog(this, "Ez a mód jelenleg nem elérhető!");
+    }//GEN-LAST:event_nPoharActionPerformed
+
+    private void elsoPoharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elsoPoharActionPerformed
+        talalt_E(elsoPohar);
+    }//GEN-LAST:event_elsoPoharActionPerformed
+
+    private void masodikPoharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masodikPoharActionPerformed
+        talalt_E(masodikPohar);
+    }//GEN-LAST:event_masodikPoharActionPerformed
+
+    private void harmadikPoharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_harmadikPoharActionPerformed
+        talalt_E(harmadikPohar);
+    }//GEN-LAST:event_harmadikPoharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,20 +250,45 @@ public class Ablak extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Mentés;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem betoltes;
+    private javax.swing.JButton elsoPohar;
+    private javax.swing.JMenuItem hPohar;
+    private javax.swing.JButton harmadikPohar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu jatekFile;
+    private javax.swing.JMenu jatekMenu;
+    private javax.swing.JButton masodikPohar;
+    private javax.swing.JMenuItem mentes;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem nPohar;
+    private javax.swing.JCheckBox ujHely;
+    private javax.swing.JMenuItem ujJatek;
+    private javax.swing.JLabel visszajelzes;
+    private javax.swing.JLabel visszajelzesCim;
     // End of variables declaration//GEN-END:variables
+
+    private void elhelyez() {
+        int szam = (int) (Math.random() * 3) + 1;
+        golyo = szam;
+        jo = false;
+    }
+
+    private void haromPohar() {
+        initComponents();
+        elhelyez();
+
+    }
+
+//    private void negyPohar() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+    private void talalt_E(JButton gombok) {
+        int szam = Integer.parseInt(gombok.getText());
+        if (szam == golyo) {
+            jo = true;
+            visszajelzes.setText("Eltaláltad");
+        } else {
+            visszajelzes.setText("Nem találtad el");
+        }
+    }
 }
