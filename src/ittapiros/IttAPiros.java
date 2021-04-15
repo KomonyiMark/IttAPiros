@@ -16,6 +16,7 @@ public class IttAPiros {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new Ablak().setVisible(true);
     }
     
 }
