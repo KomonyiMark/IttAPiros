@@ -8,6 +8,8 @@ package ittapiros;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -146,6 +148,11 @@ public class Ablak extends javax.swing.JFrame {
         jatekFile.add(mentes);
 
         betoltes.setText("Betöltés");
+        betoltes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                betoltesActionPerformed(evt);
+            }
+        });
         jatekFile.add(betoltes);
 
         menuBar.add(jatekFile);
@@ -237,6 +244,15 @@ public class Ablak extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ujHelyActionPerformed
 
+    private void betoltesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betoltesActionPerformed
+        try {
+            betoltes();
+            JOptionPane.showMessageDialog(this, "Sikeres betöltés");
+        } catch (IOException ex) {
+         JOptionPane.showMessageDialog(this, "Sikertelen betöltés");  
+        }
+    }//GEN-LAST:event_betoltesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -320,7 +336,21 @@ public class Ablak extends javax.swing.JFrame {
        // boolean ujhely = ujHely.isSelected();
         sb.append(golyo+";");
         sb.append(visszajelzes.getText()+";");
-        sb.append(jo);
-        Files.write(Paths.get("Mentes.txt"), sb.toString().getBytes());
+        sb.append(ujHely.isSelected());
+        Files.write(Paths.get("config.txt"), sb.toString().getBytes());
+    }
+
+    private void betoltes() throws IOException {
+        List<String> sorok = Files.readAllLines(Paths.get("config.txt"));
+       ArrayList<Visszatolt> adatok = new ArrayList<>();
+        for (int i = 0; i < sorok.size(); i++) {
+            String sor = sorok.get(i);
+            adatok.add(new Visszatolt(sor));
+        }
+       Visszatolt vissza = adatok.get(0);
+       golyo = vissza.getPozicio();
+       visszajelzes.setText(vissza.getTalalt_E());
+       ujHely.setSelected(vissza.isKeveres());
+        
     }
 }
