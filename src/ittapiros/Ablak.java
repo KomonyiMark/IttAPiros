@@ -5,6 +5,11 @@
  */
 package ittapiros;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -197,12 +202,17 @@ public class Ablak extends javax.swing.JFrame {
         elhelyez();
         ujHely.setSelected(false);
         jo = false;
-        
+
         haromPohar();
     }//GEN-LAST:event_ujJatekActionPerformed
 
     private void mentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mentesActionPerformed
-        // TODO add your handling code here:
+        try {
+            ment();
+              JOptionPane.showMessageDialog(this, "Sikeres mentés!");
+        } catch (IOException ex) {
+           JOptionPane.showMessageDialog(this, "Sikertelen mentés!");
+        }
     }//GEN-LAST:event_mentesActionPerformed
 
     private void nPoharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nPoharActionPerformed
@@ -303,5 +313,14 @@ public class Ablak extends javax.swing.JFrame {
         } else {
             visszajelzes.setText("Nem találtad el");
         }
+    }
+
+    private void ment() throws IOException {
+        StringBuilder sb = new StringBuilder();
+       // boolean ujhely = ujHely.isSelected();
+        sb.append(golyo+";");
+        sb.append(visszajelzes.getText()+";");
+        sb.append(jo);
+        Files.write(Paths.get("Mentes.txt"), sb.toString().getBytes());
     }
 }
