@@ -79,6 +79,11 @@ public class Ablak extends javax.swing.JFrame {
         visszajelzesCim.setText("Visszajelzés:");
 
         ujHely.setText("Új hely");
+        ujHely.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ujHelyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -190,7 +195,9 @@ public class Ablak extends javax.swing.JFrame {
     private void ujJatekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ujJatekActionPerformed
         visszajelzes.setText("");
         elhelyez();
+        ujHely.setSelected(false);
         jo = false;
+        
         haromPohar();
     }//GEN-LAST:event_ujJatekActionPerformed
 
@@ -213,6 +220,12 @@ public class Ablak extends javax.swing.JFrame {
     private void harmadikPoharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_harmadikPoharActionPerformed
         talalt_E(harmadikPohar);
     }//GEN-LAST:event_harmadikPoharActionPerformed
+
+    private void ujHelyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ujHelyActionPerformed
+        if (ujHely.isSelected()) {
+            elhelyez();
+        }
+    }//GEN-LAST:event_ujHelyActionPerformed
 
     /**
      * @param args the command line arguments
